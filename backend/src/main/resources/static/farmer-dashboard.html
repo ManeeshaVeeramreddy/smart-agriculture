@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring
+        </div>
+        <div class="nav-user" id="nav-user-info">
+            <!-- Dynamic User & Role info -->
+        </div>
+    </header>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-heading">Farmer Menu</div>
+            <a href="farmer-dashboard.html" class="active">📊 Dashboard</a>
+            <a href="fields.html">🌱 Fields</a>
+            <a href="crops.html">🌾 Crops</a>
+            <a href="monitoring.html">🌡️ Monitoring</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html">🚨 Alerts</a>
+            <a href="recommendation.html">💡 Recommendations</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Farmer Dashboard</h1>
+                    <p class="page-subtitle">Real-time overview of field conditions, crop inventory, and irrigation status.</p>
+                </div>
+                <div>
+                    <a href="monitoring.html" class="btn btn-primary">+ Enter Reading</a>
+                </div>
+            </div>
+
+            <!-- Prominent Irrigation Status Banner -->
+            <div id="irrigation-banner-container">
+                <!-- Dynamically populated banner with threshold check -->
+            </div>
+
+            <!-- Key Metric Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Fields</div>
+                    <div class="metric-value" id="total-fields">0</div>
+                    <div class="metric-subtext">Registered acreage parcels</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Total Crops</div>
+                    <div class="metric-value" id="total-crops">0</div>
+                    <div class="metric-subtext">Active crop varieties</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Latest Temperature</div>
+                    <div class="metric-value" id="latest-temp">--</div>
+                    <div class="metric-subtext">Ambient field temp</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Latest Humidity</div>
+                    <div class="metric-value" id="latest-humidity">--</div>
+                    <div class="metric-subtext">Atmospheric moisture</div>
+                </div>
+
+                <div class="metric-card info">
+                    <div class="metric-label">Latest Soil Moisture</div>
+                    <div class="metric-value" id="latest-moisture">--</div>
+                    <div class="metric-subtext">Threshold: 30.0%</div>
+                </div>
+
+                <div class="metric-card danger">
+                    <div class="metric-label">Active Alerts</div>
+                    <div class="metric-value" id="active-alerts-count">0</div>
+                    <div class="metric-subtext">Critical issues detected</div>
+                </div>
+            </div>
+
+            <!-- Active Alerts Section -->
+            <div class="card">
+                <div class="card-title">
+                    <span>🚨 Active Alerts &amp; Critical Conditions</span>
+                    <a href="alerts.html" class="btn btn-sm btn-outline">View All Alerts</a>
+                </div>
+                <div id="active-alerts-list">
+                    <!-- Loaded dynamically -->
+                </div>
+            </div>
+
+            <!-- Fields Summary Table -->
+            <div class="card">
+                <div class="card-title">
+                    <span>🌱 Registered Fields Overview</span>
+                    <a href="fields.html" class="btn btn-sm btn-primary">+ Manage Fields</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Field Name</th>
+                                <th>Location</th>
+                                <th>Area</th>
+                                <th>Soil Type</th>
+                                <th>Soil Moisture</th>
+                                <th>Irrigation Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="fields-summary-tbody">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/farmer-dashboard.js"></script>
+</body>
+</html>

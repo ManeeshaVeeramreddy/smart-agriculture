@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Agronomic Criteria - Admin Console</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar" style="background-color: #1a252f;">
+        <div class="navbar-brand" data-i18n="brand_admin">
+            🛡️ Smart Agriculture — Admin Console
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading" data-i18n="menu_admin">Admin Console</div>
+            <a href="admin-dashboard.html" data-i18n="nav_overview">📊 Overview</a>
+            <a href="users.html" data-i18n="nav_users">👥 User Management</a>
+            <a href="admin-crops-criteria.html" class="active" data-i18n="nav_knowledge_base">📚 Crop Criteria (Admin)</a>
+            <a href="admin-monitoring.html" data-i18n="nav_sys_monitoring">📡 System Telemetry</a>
+            <a href="/swagger-ui.html" target="_blank">📑 Swagger Docs</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);" data-i18n="nav_logout">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title" data-i18n="title_crop_criteria">Dynamic Crop Requirements Knowledge Base</h1>
+                    <p class="page-subtitle" data-i18n="subtitle_crop_criteria">Configure reference agronomic thresholds used by the rule-based Crop Recommendation Engine.</p>
+                </div>
+                <div>
+                    <button onclick="openAddRequirementModal()" class="btn btn-primary" data-i18n="btn_add_crop_req">+ Add New Crop Criteria</button>
+                </div>
+            </div>
+
+            <div class="card" style="border-left: 5px solid var(--primary);">
+                <div style="font-size:0.95rem; color:var(--text-dark);">
+                    💡 <strong>Dynamic Business Logic:</strong> Any modifications or additions made here will <strong>immediately update</strong> the recommendations given to farmers on their dashboards in real time without restarting the server!
+                </div>
+            </div>
+
+            <!-- Crop Criteria Table -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="lbl_crop_name">Crop Name</th>
+                                <th data-i18n="lbl_temp_range">Temp Range (°C)</th>
+                                <th data-i18n="lbl_hum_range">Humidity Range (%)</th>
+                                <th data-i18n="lbl_moist_range">Soil Moisture Range (%)</th>
+                                <th data-i18n="lbl_suitable_soils">Suitable Soils</th>
+                                <th data-i18n="lbl_actions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="criteria-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add / Edit Modal -->
+    <div id="criteria-modal" class="modal">
+        <div class="modal-dialog" style="max-width: 600px;">
+            <div class="modal-header">
+                <h3 id="criteria-modal-title" data-i18n="btn_add_crop_req">Add Crop Requirement</h3>
+                <button type="button" class="modal-close" onclick="closeCriteriaModal()">&times;</button>
+            </div>
+            <form id="criteria-form">
+                <input type="hidden" id="criteria-id">
+
+                <div class="form-group">
+                    <label class="form-label" for="crit-crop-name" data-i18n="lbl_crop_name">Crop Variety Name</label>
+                    <input type="text" id="crit-crop-name" class="form-control" placeholder="e.g. Cotton, Chilli, Sugarcane" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="crit-min-temp" data-i18n="lbl_min_temp">Min Temperature (°C)</label>
+                        <input type="number" id="crit-min-temp" class="form-control" step="0.5" placeholder="20" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="crit-max-temp" data-i18n="lbl_max_temp">Max Temperature (°C)</label>
+                        <input type="number" id="crit-max-temp" class="form-control" step="0.5" placeholder="35" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="crit-min-hum" data-i18n="lbl_min_humidity">Min Humidity (%)</label>
+                        <input type="number" id="crit-min-hum" class="form-control" min="0" max="100" placeholder="50" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="crit-max-hum" data-i18n="lbl_max_humidity">Max Humidity (%)</label>
+                        <input type="number" id="crit-max-hum" class="form-control" min="0" max="100" placeholder="85" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="crit-min-moist" data-i18n="lbl_min_moisture">Min Soil Moisture (%)</label>
+                        <input type="number" id="crit-min-moist" class="form-control" min="0" max="100" placeholder="30" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="crit-max-moist" data-i18n="lbl_max_moisture">Max Soil Moisture (%)</label>
+                        <input type="number" id="crit-max-moist" class="form-control" min="0" max="100" placeholder="70" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="crit-soil-type" data-i18n="lbl_suitable_soil">Suitable Soil Type</label>
+                    <input type="text" id="crit-soil-type" class="form-control" placeholder="e.g. Black Soil, Loamy, Alluvial" required>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeCriteriaModal()" data-i18n="btn_cancel">Cancel</button>
+                    <button type="submit" class="btn btn-primary" data-i18n="btn_save">Save Criteria</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice-assistant.js"></script>
+    <script src="js/admin-crops-criteria.js"></script>
+</body>
+</html>

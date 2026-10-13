@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Smart Agriculture Monitoring System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2>🌾 <span data-i18n="login_title">Farmer Login</span></h2>
+                <p data-i18n="login_sub">Sign in to see today's advice for your farm</p>
+            </div>
+
+            <div class="demo-credentials-box">
+                <strong>💡 Quick Demo Credentials:</strong>
+                <div style="margin-top: 0.5rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                    <button type="button" onclick="fillDemoCredentials('farmer')" class="btn btn-sm btn-outline">Farmer Demo</button>
+                    <button type="button" onclick="fillDemoCredentials('admin')" class="btn btn-sm btn-secondary">Admin Demo</button>
+                </div>
+            </div>
+
+            <form id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="email" data-i18n="login_id">Mobile number or email</label>
+                    <input type="text" id="email" class="form-control" placeholder="9123456789" inputmode="text" autocomplete="username" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="password" data-i18n="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem; min-height: 52px; font-size: 1.1rem;" data-i18n="login_btn">
+                    Login
+                </button>
+            </form>
+
+            <div class="auth-footer">
+                <span data-i18n="no_account">New here?</span> <a href="register.html"><strong data-i18n="register_link">Create account</strong></a><br>
+                <small data-i18n="tap_mic_hint" style="color: var(--text-muted)"></small><br>
+                <a href="index.html" style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.5rem; display: inline-block;">&larr; Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/auth.js"></script>
+</body>
+</html>

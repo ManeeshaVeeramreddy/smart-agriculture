@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Monitoring Data - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading">Farmer Menu</div>
+            <a href="farmer-dashboard.html">📊 Dashboard</a>
+            <a href="fields.html">🌱 Fields</a>
+            <a href="crops.html">🌾 Crops</a>
+            <a href="monitoring.html" class="active">🌡️ Monitoring</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html">🚨 Alerts</a>
+            <a href="recommendation.html">💡 Recommendations</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Add Field Monitoring Data</h1>
+                    <p class="page-subtitle">Record temperature, relative humidity, and soil moisture observations.</p>
+                </div>
+            </div>
+
+            <!-- Simulation Presets for Viva / Faculty Evaluation -->
+            <div class="card" style="border-left: 5px solid var(--warning);">
+                <h3 class="card-title" style="margin-bottom:0.75rem;">
+                    <span>🧪 Simulation &amp; Quick Demo Presets</span>
+                    <span style="font-size:0.8rem; font-weight:normal; color:var(--text-muted);">(Software-only; no physical sensors required)</span>
+                </h3>
+                <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">
+                    Click a preset below to instantly simulate condition values and demonstrate Spring Boot business logic:
+                </p>
+                <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+                    <button type="button" onclick="loadSimulationPreset('critical')" class="btn btn-sm btn-danger">
+                        🚨 Critical Dry Soil (25% &rarr; Triggers Irrigation Alert)
+                    </button>
+                    <button type="button" onclick="loadSimulationPreset('normal')" class="btn btn-sm btn-success">
+                        ✅ Normal Moisture (45% &rarr; Moisture Level Normal)
+                    </button>
+                    <button type="button" onclick="loadSimulationPreset('boundary')" class="btn btn-sm btn-info">
+                        ⚖️ Boundary Value (30% &rarr; Moisture Level Normal)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Monitoring Form Card -->
+            <div class="card">
+                <form id="monitoring-form">
+                    <div class="form-group">
+                        <label class="form-label" for="field-select">Target Field</label>
+                        <select id="field-select" class="form-select" required>
+                            <option value="">-- Choose Field --</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label class="form-label" for="temperature">Temperature (°C)</label>
+                            <input type="number" id="temperature" class="form-control" placeholder="e.g. 29.5" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="humidity">Humidity (% between 0 - 100)</label>
+                            <input type="number" id="humidity" class="form-control" placeholder="e.g. 68" min="0" max="100" step="0.1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="soil-moisture">
+                                Soil Moisture (% between 0 - 100)
+                                <span style="font-weight:normal; font-size:0.8rem; color:var(--danger);">(Threshold &lt; 30%)</span>
+                            </label>
+                            <input type="number" id="soil-moisture" class="form-control" placeholder="e.g. 25" min="0" max="100" step="0.1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="reading-date">Observation Timestamp</label>
+                        <input type="datetime-local" id="reading-date" class="form-control" style="max-width:320px;">
+                    </div>
+
+                    <div style="margin-top: 1.5rem;">
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="padding:0.75rem 2rem;">
+                            Record Reading
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Live Evaluation Result Display Box -->
+            <div id="evaluation-result-box" style="display: none; margin-top: 2rem;">
+                <!-- Populated dynamically after submission -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/monitoring.js"></script>
+</body>
+</html>

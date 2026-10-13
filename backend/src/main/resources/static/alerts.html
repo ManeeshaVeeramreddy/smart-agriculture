@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts Center - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading">Farmer Menu</div>
+            <a href="farmer-dashboard.html">📊 Dashboard</a>
+            <a href="fields.html">🌱 Fields</a>
+            <a href="crops.html">🌾 Crops</a>
+            <a href="monitoring.html">🌡️ Monitoring</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html" class="active">🚨 Alerts</a>
+            <a href="recommendation.html">💡 Recommendations</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Alerts &amp; Notifications</h1>
+                    <p class="page-subtitle">Track automated threshold triggers, low moisture alerts, and resolution logs.</p>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="card" style="padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                    <label style="font-weight:600; font-size:0.9rem;">Alert Status:</label>
+                    <select id="alert-status-filter" class="form-select" style="max-width:250px;">
+                        <option value="ALL">All Alerts (Active &amp; Resolved)</option>
+                        <option value="ACTIVE" selected>Active Alerts Only</option>
+                        <option value="RESOLVED">Resolved Alerts Only</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Alerts Container -->
+            <div id="alerts-container">
+                <!-- Loaded dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/alerts.js"></script>
+</body>
+</html>

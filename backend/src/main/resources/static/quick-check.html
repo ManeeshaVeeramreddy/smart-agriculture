@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Soil - Smart Farm</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">🌾 <span data-i18n="app_name">Smart Farm</span></div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading" data-i18n="sidebar_heading">Farmer Menu</div>
+            <a href="farmer-home.html">🏠 My Farm</a>
+            <a href="quick-check.html">🖐️ Check Soil</a>
+            <a href="farmer-dashboard.html">📊 Full Dashboard</a>
+            <a href="fields.html">🌱 Fields</a>
+            <a href="crops.html">🌾 Crops</a>
+            <a href="monitoring.html">🌡️ Enter Reading</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html">🚨 Warnings</a>
+            <a href="recommendation.html">💡 What to Grow</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content quick-check">
+            <p><a href="farmer-home.html" data-i18n="back_home">← Back to My Farm</a></p>
+            <h1 class="page-title" data-i18n="qc_title">Check your soil</h1>
+
+            <!-- Step 1: which field -->
+            <section id="step-field" class="hidden">
+                <div class="step-prompt">
+                    <button type="button" class="big-btn secondary" id="say-field" aria-label="listen">🔊</button>
+                    <span data-i18n="qc_pick_field">Which field?</span>
+                </div>
+                <div class="choice-grid" id="field-choices"></div>
+            </section>
+
+            <!-- Step 2: how does the soil feel -->
+            <section id="step-feel" class="hidden">
+                <div class="step-prompt">
+                    <button type="button" class="big-btn secondary" id="say-feel" aria-label="listen">🔊</button>
+                    <span data-i18n="qc_squeeze">Take a handful of soil and squeeze it. How does it feel?</span>
+                </div>
+                <p id="chosen-field" class="meter-caption"></p>
+                <div class="choice-grid">
+                    <button type="button" class="choice feel-dry" data-feel="DRY">
+                        <span class="choice-icon">🏜️</span>
+                        <span class="choice-label" data-i18n="qc_dry">Dry</span>
+                        <span class="choice-desc" data-i18n="qc_dry_desc"></span>
+                    </button>
+                    <button type="button" class="choice feel-moist" data-feel="MOIST">
+                        <span class="choice-icon">🌱</span>
+                        <span class="choice-label" data-i18n="qc_moist">Moist</span>
+                        <span class="choice-desc" data-i18n="qc_moist_desc"></span>
+                    </button>
+                    <button type="button" class="choice feel-wet" data-feel="WET">
+                        <span class="choice-icon">💧</span>
+                        <span class="choice-label" data-i18n="qc_wet">Wet</span>
+                        <span class="choice-desc" data-i18n="qc_wet_desc"></span>
+                    </button>
+                </div>
+                <div class="mic-row">
+                    <button type="button" class="big-btn secondary" id="feel-mic">🎤 <span data-i18n="ask_voice">Ask by voice</span></button>
+                    <span data-i18n="qc_say">Or tap the microphone and say: dry, moist or wet.</span>
+                </div>
+            </section>
+
+            <!-- Step 3: result -->
+            <section id="step-result" class="hidden">
+                <div class="result-card">
+                    <h2 id="result-title"></h2>
+                    <div id="result-card-body"></div>
+                    <div class="fc-actions" style="margin-top:1rem">
+                        <button type="button" class="big-btn" id="result-listen">🔊 <span data-i18n="listen">Listen</span></button>
+                        <button type="button" class="big-btn secondary" id="check-another">🖐️ <span data-i18n="qc_again">Check another field</span></button>
+                        <a class="big-btn secondary" href="farmer-home.html">🏠 <span data-i18n="nav_home">My Farm</span></a>
+                    </div>
+                </div>
+            </section>
+
+            <p id="qc-empty" class="hidden"></p>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/quick-check.js"></script>
+</body>
+</html>

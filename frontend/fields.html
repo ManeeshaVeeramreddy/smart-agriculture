@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Field Management - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading">Farmer Menu</div>
+            <a href="farmer-dashboard.html">📊 Dashboard</a>
+            <a href="fields.html" class="active">🌱 Fields</a>
+            <a href="crops.html">🌾 Crops</a>
+            <a href="monitoring.html">🌡️ Monitoring</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html">🚨 Alerts</a>
+            <a href="recommendation.html">💡 Recommendations</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Field Management</h1>
+                    <p class="page-subtitle">Configure agricultural fields, terrain acreage, and soil classifications.</p>
+                </div>
+                <div>
+                    <button onclick="openAddFieldModal()" class="btn btn-primary">+ Add New Field</button>
+                </div>
+            </div>
+
+            <!-- Fields Cards Grid -->
+            <div id="fields-container" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem;">
+                <!-- Populated dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Add / Edit Field Modal Dialog -->
+    <div id="field-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Field</h3>
+                <button type="button" class="modal-close" onclick="closeFieldModal()">&times;</button>
+            </div>
+            <form id="field-form">
+                <input type="hidden" id="field-id">
+
+                <div class="form-group">
+                    <label class="form-label" for="field-name">Field Name</label>
+                    <input type="text" id="field-name" class="form-control" placeholder="e.g. Field A (North Block)" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="field-location">Location / Region</label>
+                    <input type="text" id="field-location" class="form-control" placeholder="e.g. Amaravati" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="field-area">Area (in acres)</label>
+                        <input type="number" id="field-area" class="form-control" placeholder="2.5" step="0.1" min="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="field-soil-type">Soil Classification</label>
+                        <select id="field-soil-type" class="form-select" required>
+                            <option value="Loamy">Loamy</option>
+                            <option value="Clay">Clay</option>
+                            <option value="Sandy">Sandy</option>
+                            <option value="Black">Black Soil</option>
+                            <option value="Red">Red Soil</option>
+                            <option value="Silty">Silty</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeFieldModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Field</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/fields.js"></script>
+</body>
+</html>

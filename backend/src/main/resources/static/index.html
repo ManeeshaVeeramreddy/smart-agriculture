@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Agriculture Monitoring System (SAMS)</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .hero {
+            background: linear-gradient(135deg, rgba(27, 67, 50, 0.95), rgba(45, 106, 79, 0.9)), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+            color: #ffffff;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            color: #ffffff;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: #d8f3dc;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-item {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            border-top: 4px solid var(--primary);
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring System
+        </div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="/swagger-ui.html" target="_blank">Swagger API</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Smart Agriculture Monitoring System</h1>
+        <p>
+            A full-stack, layered architecture web platform empowering farmers to manage fields, track crops, record agricultural conditions, receive automated irrigation alerts, and obtain rule-based crop suitability recommendations.
+        </p>
+        <div class="hero-buttons">
+            <a href="login.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 0.8rem 2rem;">Get Started (Login)</a>
+            <a href="register.html" class="btn btn-outline" style="border-color:#fff; color:#fff; font-size:1.1rem; padding:0.8rem 2rem;">Farmer Registration</a>
+        </div>
+    </section>
+
+    <div class="features-grid">
+        <div class="feature-item">
+            <div class="feature-icon">🌱</div>
+            <h3>Field &amp; Crop Management</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">
+                Maintain parcel locations, acreage, soil classifications (Loamy, Clay, Sandy), and track crop lifecycle statuses from sowing to harvest.
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon">💧</div>
+            <h3>Automated Irrigation Logic</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">
+                Spring Boot Service Layer evaluates soil moisture against the 30% threshold: <strong>Soil Moisture &lt; 30%</strong> triggers <em>Irrigation Required</em> and automatic alert dispatch.
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon">🚨</div>
+            <h3>Proactive Alert Generation</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">
+                Receive instant notifications when critical dryness is detected, with dedicated active and historical alert tracking.
+            </p>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon">📊</div>
+            <h3>Rule-Based Crop Recommendations</h3>
+            <p style="color:var(--text-muted); margin-top:0.5rem;">
+                Determines crop suitability scores (Rice, Wheat, Maize, Tomato, Groundnut) based on temperature, humidity, moisture, and soil compatibility.
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Smart Agriculture Monitoring System (SAMS) | Designed for Academic &amp; Research Excellence</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+</body>
+</html>

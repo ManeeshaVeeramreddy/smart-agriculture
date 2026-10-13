@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - Smart Agriculture Admin</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar" style="background-color: #1a252f;">
+        <div class="navbar-brand">
+            🛡️ Smart Agriculture — Admin Console
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading">Admin Console</div>
+            <a href="admin-dashboard.html">📊 Overview</a>
+            <a href="users.html" class="active">👥 User Management</a>
+            <a href="admin-monitoring.html">📡 System Monitoring</a>
+            <a href="/swagger-ui.html" target="_blank">📑 Swagger Docs</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">User Management</h1>
+                    <p class="page-subtitle">View registered accounts, verify assigned roles, and manage users.</p>
+                </div>
+            </div>
+
+            <!-- Users Table Card -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>User ID</th>
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Role</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/users.js"></script>
+</body>
+</html>

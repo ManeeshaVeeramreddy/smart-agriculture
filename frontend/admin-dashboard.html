@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Dashboard - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="navbar" style="background-color: #1a252f;">
+        <div class="navbar-brand">
+            🛡️ Smart Agriculture — Admin Console
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <!-- Admin Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-heading">Admin Console</div>
+            <a href="admin-dashboard.html" class="active">📊 Overview</a>
+            <a href="users.html">👥 User Management</a>
+            <a href="admin-monitoring.html">📡 System Monitoring</a>
+            <a href="/swagger-ui.html" target="_blank">📑 Swagger Docs</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Administrator Dashboard</h1>
+                    <p class="page-subtitle">Central system analytics, user accounts, and agriculture records overview.</p>
+                </div>
+            </div>
+
+            <!-- Stats Metric Cards -->
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Users</div>
+                    <div class="metric-value" id="stat-total-users">0</div>
+                    <div class="metric-subtext">Registered accounts</div>
+                </div>
+
+                <div class="metric-card info">
+                    <div class="metric-label">Total Farmers</div>
+                    <div class="metric-value" id="stat-total-farmers">0</div>
+                    <div class="metric-subtext">Active farmer roles</div>
+                </div>
+
+                <div class="metric-card success">
+                    <div class="metric-label">Total Fields</div>
+                    <div class="metric-value" id="stat-total-fields">0</div>
+                    <div class="metric-subtext">Registered farm plots</div>
+                </div>
+
+                <div class="metric-card">
+                    <div class="metric-label">Total Crops</div>
+                    <div class="metric-value" id="stat-total-crops">0</div>
+                    <div class="metric-subtext">Cultivated crops</div>
+                </div>
+
+                <div class="metric-card warning">
+                    <div class="metric-label">Monitoring Records</div>
+                    <div class="metric-value" id="stat-total-monitoring">0</div>
+                    <div class="metric-subtext">Total data readings</div>
+                </div>
+
+                <div class="metric-card danger">
+                    <div class="metric-label">Active Alerts</div>
+                    <div class="metric-value" id="stat-active-alerts">0</div>
+                    <div class="metric-subtext">Unresolved alerts</div>
+                </div>
+            </div>
+
+            <!-- Recent Alerts & Readings -->
+            <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem;">
+                <!-- Recent Alerts -->
+                <div class="card" style="margin-bottom:0;">
+                    <div class="card-title">
+                        <span>🚨 System Alerts</span>
+                        <a href="admin-monitoring.html" class="btn btn-sm btn-outline">View All</a>
+                    </div>
+                    <div id="admin-recent-alerts">
+                        <!-- Populated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Recent Monitoring Data -->
+                <div class="card" style="margin-bottom:0;">
+                    <div class="card-title">
+                        <span>📡 Recent Monitoring Data</span>
+                        <a href="admin-monitoring.html" class="btn btn-sm btn-outline">View All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Field</th>
+                                    <th>Temp</th>
+                                    <th>Moisture</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admin-recent-monitoring-tbody">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/admin-dashboard.js"></script>
+</body>
+</html>

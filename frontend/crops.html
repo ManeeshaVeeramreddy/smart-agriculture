@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Management - Smart Agriculture</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/farmer.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-brand">
+            🌾 Smart Agriculture Monitoring
+        </div>
+        <div class="nav-user" id="nav-user-info"></div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="sidebar-heading">Farmer Menu</div>
+            <a href="farmer-dashboard.html">📊 Dashboard</a>
+            <a href="fields.html">🌱 Fields</a>
+            <a href="crops.html" class="active">🌾 Crops</a>
+            <a href="monitoring.html">🌡️ Monitoring</a>
+            <a href="monitoring-history.html">📜 History</a>
+            <a href="alerts.html">🚨 Alerts</a>
+            <a href="recommendation.html">💡 Recommendations</a>
+            <div style="margin-top:auto; padding-top:1rem; border-top:1px solid var(--border-color);">
+                <a href="#" onclick="Auth.logout()" style="color:var(--danger);">🚪 Logout</a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="content-header">
+                <div>
+                    <h1 class="page-title">Crop Management</h1>
+                    <p class="page-subtitle">Track crops planted across your fields, monitor growth stages, and target harvest dates.</p>
+                </div>
+                <div>
+                    <button onclick="openAddCropModal()" class="btn btn-primary">+ Add New Crop</button>
+                </div>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="card" style="padding: 1rem 1.5rem; margin-bottom: 1.5rem;">
+                <div style="display:flex; align-items:center; gap:1rem; flex-wrap:wrap;">
+                    <label style="font-weight:600; font-size:0.9rem;">Filter by Field:</label>
+                    <select id="field-filter" class="form-select" style="max-width:300px;">
+                        <option value="">All Fields</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Crops Table -->
+            <div class="card">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Crop Variety</th>
+                                <th>Field</th>
+                                <th>Planting Date</th>
+                                <th>Expected Harvest</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="crops-tbody">
+                            <!-- Populated dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add / Edit Crop Modal Dialog -->
+    <div id="crop-modal" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3 id="crop-modal-title">Add New Crop</h3>
+                <button type="button" class="modal-close" onclick="closeCropModal()">&times;</button>
+            </div>
+            <form id="crop-form">
+                <input type="hidden" id="crop-id">
+
+                <div class="form-group">
+                    <label class="form-label" for="crop-name">Crop Name</label>
+                    <input type="text" id="crop-name" class="form-control" placeholder="e.g. Rice, Wheat, Maize, Tomato" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="crop-field-id">Assigned Field</label>
+                    <select id="crop-field-id" class="form-select" required>
+                        <!-- Populated with farmer's fields -->
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label" for="crop-planting-date">Planting Date</label>
+                        <input type="date" id="crop-planting-date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="crop-harvest-date">Expected Harvest</label>
+                        <input type="date" id="crop-harvest-date" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" for="crop-status">Current Status</label>
+                    <select id="crop-status" class="form-select" required>
+                        <option value="Sown">Sown</option>
+                        <option value="Vegetative">Vegetative</option>
+                        <option value="Growing" selected>Growing</option>
+                        <option value="Flowering">Flowering</option>
+                        <option value="Ripening">Ripening</option>
+                        <option value="Harvested">Harvested</option>
+                    </select>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeCropModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Crop</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/voice.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/advisor.js"></script>
+    <script src="js/assistant.js"></script>
+    <script src="js/shell.js"></script>
+    <script src="js/crops.js"></script>
+</body>
+</html>

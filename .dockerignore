@@ -1,0 +1,10 @@
+**/.git
+**/.github
+**/target
+**/*.log
+**/.idea
+**/.vscode
+**/test_system.py
+**/*.md
+**/*.bat
+**/*.sh
