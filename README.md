@@ -4,8 +4,8 @@ A full-stack, enterprise-grade web application built with **Java Spring Boot**, 
 
 **Author & Lead Developer:** [Maneesha Veeramreddy](https://github.com/ManeeshaVeeramreddy)  
 **GitHub Repository:** [https://github.com/ManeeshaVeeramreddy/smart-agriculture](https://github.com/ManeeshaVeeramreddy/smart-agriculture)
-**
-url:**https://smart-agriculture-18mo.onrender.com
+ 
+ **url:**[https://smart-agriculture-18mo.onrender.com]
 
 ---
 
