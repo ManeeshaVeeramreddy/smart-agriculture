@@ -2,6 +2,9 @@
 
 A full-stack, enterprise-grade web application built with **Java Spring Boot**, **MySQL**, **Layered Architecture**, and a responsive **HTML/CSS/JavaScript** frontend. Designed in compliance with the **Software Requirement Specification (SRS) Document v1.1** for academic and research evaluation.
 
+**Author & Lead Developer:** [Maneesha Veeramreddy](https://github.com/ManeeshaVeeramreddy)  
+**GitHub Repository:** [https://github.com/ManeeshaVeeramreddy/smart-agriculture](https://github.com/ManeeshaVeeramreddy/smart-agriculture)
+
 ---
 
 ---

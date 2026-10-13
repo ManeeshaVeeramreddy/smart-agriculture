@@ -17,6 +17,19 @@
     <name>Smart Agriculture Monitoring System</name>
     <description>Smart Agriculture Monitoring System (SAMS) - Spring Boot &amp; MySQL</description>
 
+    <developers>
+        <developer>
+            <id>ManeeshaVeeramreddy</id>
+            <name>Maneesha Veeramreddy</name>
+            <email>maneeshareddyveeramreddy0805@gmail.com</email>
+            <organization>VIT-AP University</organization>
+            <roles>
+                <role>Lead Developer</role>
+                <role>System Architect</role>
+            </roles>
+        </developer>
+    </developers>
+
     <properties>
         <java.version>21</java.version>
         <jjwt.version>0.11.5</jjwt.version>

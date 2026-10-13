@@ -2,6 +2,11 @@
 ## Comprehensive Technical Project Report & Documentation
 **Software Requirement Specification (SRS) v1.1 Compliant**
 
+- **Lead Developer & Architect:** Maneesha Veeramreddy ([@ManeeshaVeeramreddy](https://github.com/ManeeshaVeeramreddy))
+- **Email:** maneeshareddyveeramreddy0805@gmail.com
+- **Institution:** VIT-AP University (Reg. No: 23MIC7240)
+- **GitHub Repository:** [https://github.com/ManeeshaVeeramreddy/smart-agriculture](https://github.com/ManeeshaVeeramreddy/smart-agriculture)
+
 ---
 
 ## 1. Executive Summary & Abstract
